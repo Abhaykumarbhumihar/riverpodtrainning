@@ -6,15 +6,14 @@ import 'count_with_statenotifier.dart';
 import 'counter_app.dart';
 import 'family/multiple_data.dart';
 import 'stream_provider/stream_reverpord.dart';
+import 'video15/Filteringwithoutrebuild.dart';
 
-
-final nameProvider=Provider<String>((ref) {
+final nameProvider = Provider<String>((ref) {
   return "Abhay kumr rai rai SDF SDF";
 });
 
-
 void main() {
-  runApp(const ProviderScope(child:  MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,11 +28,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  UserlistPage(),
+      home: FilteringWithOutRebuild(),
     );
   }
 }
-
 
 class MyHomepage extends ConsumerStatefulWidget {
   const MyHomepage({super.key});
@@ -43,21 +41,24 @@ class MyHomepage extends ConsumerStatefulWidget {
 }
 
 class _MyHomepageState extends ConsumerState<MyHomepage> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
- final name=ref.read(nameProvider);
+    final name = ref.read(nameProvider);
     print(name);
   }
 
   @override
   Widget build(BuildContext context) {
-    final name=ref.watch(nameProvider);
+    final name = ref.watch(nameProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text("Reverpord Toturial"),),
-      body:  Center(child: Text(name),),
+      appBar: AppBar(
+        title: const Text("Reverpord Toturial"),
+      ),
+      body: Center(
+        child: Text(name),
+      ),
     );
   }
 }
