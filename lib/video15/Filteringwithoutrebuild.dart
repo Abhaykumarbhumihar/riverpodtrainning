@@ -13,8 +13,8 @@ class FilteringWithOutRebuild extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     print("build method is called");
-    //final user = ref.watch(userProvider.select((value) => value.name));
     final user = ref.watch(userProvider);
+    //final user = ref.watch(userProvider.select((value) => value.name));
     return Scaffold(
       appBar: AppBar(
         title: const Text("Filtering without Rebuild"),
@@ -26,8 +26,7 @@ class FilteringWithOutRebuild extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              onChanged: (value) =>
-                  ref.read(userProvider.notifier).updateName(value),
+              onChanged: (value) =>  ref.read(userProvider.notifier).updateName(value),
               onSubmitted: (value) =>
                   ref.read(userProvider.notifier).updateName(value),
             ),
@@ -41,7 +40,7 @@ class FilteringWithOutRebuild extends ConsumerWidget {
             const SizedBox(
               height: 10.0,
             ),
-            Text("${user.name} ${user.address}"),
+            Text(user.name + " " + user.address),
             const SizedBox(
               height: 10.0,
             )
